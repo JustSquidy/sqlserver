@@ -36,3 +36,4 @@ WHERE CustomerID = 'ALFKI';
 -- DELETE Statements remove records from database
 
 DELETE FROM Orders WHERE OrderID = 10248;
+DELETE FROM [Order Details] WHERE OrderID = 10248;
