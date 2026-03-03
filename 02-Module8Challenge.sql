@@ -105,16 +105,28 @@ WHERE ProductName = 'Totinos Pizza Rolls'; -- checks to see if the new product w
 	- 123 Sesame Street as the address
     - Saint Paul as the city
 */
+SET IDENTITY_INSERT Suppliers ON; -- allows you to insert a value into the identity column (SupplierID) of the Suppliers table.
+
+INSERT INTO Suppliers (SupplierID, CompanyName, ContactName, ContactTitle, Address, City)
+VALUES (30, 'Code Fellows', 'John Doe', 'Manager', '123 Sesame Street', 'Saint Paul'); -- inserts a new supplier with the specified values.
  
 /*
 11. Display the new record that you created in the suppliers
     table to ensure it was inserted correctly.
 */
+SELECT * FROM Suppliers
+WHERE SupplierID = 30; -- checks to see if the new supplier was added correctly.
 
 /*
 12. Update the record in the products table for your favorite food.
 Change the unit price from $4.55 to $9.99.
 */
+UPDATE Products
+SET UnitPrice = 9.99
+WHERE ProductName = 'Totinos Pizza Rolls'; -- updates the price of the product to $9.99 where the product name is Totinos Pizza Rolls.
+
+SELECT * FROM Products
+WHERE ProductName = 'Totinos Pizza Rolls'; -- checks to see if the price was updated correctly.
 
 /*
 13. Insert a new record into the Categories table. 
@@ -124,13 +136,20 @@ a value into the CategoryID column because that it auto-populated.
 You don't need to insert a value into the Picture column 
 because it is optional.
 */
+INSERT INTO Categories (CategoryName, Description)
+VALUES ('Ice Cream', 'Frosty desserts'); -- inserts a new category with the name Ice Cream and the description Frosty desserts.
+
+SELECT * FROM Categories
+WHERE CategoryName = 'Ice Cream'; -- checks to see if the new category was added correctly.
 
 /*
 14. Delete the record you just inserted into the Categories table.
 */
- 
+DELETE FROM Categories
+WHERE CategoryName = 'Ice Cream'; -- deletes the record where the category name is Ice Cream.
 
-
+SELECT * FROM Categories
+WHERE CategoryName = 'Ice Cream'; -- checks to see if the record was deleted correctly.
 
 
 
