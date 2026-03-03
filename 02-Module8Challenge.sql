@@ -46,16 +46,24 @@ ORDER BY UnitPrice ASC; -- sorts list of products by price going smallest to lar
 /*
 4.	List all products with the brand "Sir Rodney's" in the product name. 
 */
-
+SELECT * FROM Products
+WHERE ProductName LIKE '%Sir Rodney''s%'; -- searches for products with "Sir Rodney's in the name.
 
 /*
 5.	Create a list of product names and product IDs for products 
 with supplier ID 20. Order by product name. */
 
+SELECT SupplierID, ProductID, ProductName FROM Products
+WHERE SupplierID = 20
+ORDER BY ProductName; -- searches for products with supplier ID 20 and sorts by product name
+
 /*
 6.	List the product ID and product name for products with 
 zero units on order. Order by product ID. 
 */
+SELECT ProductID, ProductName, UnitsOnOrder FROM Products
+WHERE UnitsOnOrder = 0
+ORDER BY ProductID; -- searches for products with zero units on order and sorts by product ID
 
 /*
 7. Your boss has asked you for a list of orders for
@@ -65,18 +73,27 @@ zero units on order. Order by product ID.
 	   helped place the order.
        (Hint: Use a JOIN to retrieve data from more than one table.)
 */
+SELECT o.OrderID, c.CompanyName, e.FirstName, e.LastName FROM Orders AS o
+JOIN Customers AS c ON o.CustomerID = c.CustomerID
+JOIN Employees AS e ON o.EmployeeID = e.EmployeeID
+WHERE e.FirstName = 'Janet' AND e.LastName = 'Leverling'; -- searches for orders where the employee's name is Janet Leverling and retrieves the order ID, company name
 
 /*
 8. Insert a new record into the products table with a product name
     that is your favorite food, a unit price that is $4.55, supplier ID 26, and category ID 5.
 */
- 
+INSERT INTO Products (ProductName, UnitPrice, SupplierID, CategoryID)
+VALUES ('Totinos Pizza Rolls', 4.55, 26, 5); -- inserts a new product with the name Pizza, a price of $4.55, supplier ID 26, and category ID 5.
 
 
 /*
 9. Display the new record you added to the products table 
 where the product name is your favorite food.
 */
+
+SELECT * FROM Products
+WHERE ProductName = 'Totinos Pizza Rolls'; -- checks to see if the new product was added correctly.
+
 
 /*
 10. Insert a record into the suppliers table.
