@@ -28,16 +28,20 @@ The list should include the product name, unit price,
 and how many units Northwind has in stock.
 */
 
-/
-*2.	
+SELECT ProductName, UnitPrice, UnitsInStock FROM Products; -- queries name, price and stock size from products table.
+
+/*2.	
 List the product name and units in stock for products where UnitsInStock equals zero.
 */
+SELECT ProductName, UnitsInStock FROM Products
+WHERE UnitsInStock = 0; -- same as question 1 but sorts by whichever product has zero stock left.
 
 /*
 3.	List the product name and the unit price for each product. 
 Sort the list with the smallest unit price on top.
 */
-
+SELECT ProductName, UnitPrice FROM Products
+ORDER BY UnitPrice ASC; -- sorts list of products by price going smallest to largest.
 
 /*
 4.	List all products with the brand "Sir Rodney's" in the product name. 
